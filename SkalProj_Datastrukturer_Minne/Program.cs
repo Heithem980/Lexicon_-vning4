@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace SkalProj_Datastrukturer_Minne
+﻿namespace SkalProj_Datastrukturer_Minne
 {
     class Program
     {
@@ -72,9 +70,9 @@ namespace SkalProj_Datastrukturer_Minne
              * Below you can see some inspirational code to begin working.
             */
 
-            //List<string> theList = new List<string>();
-            //string input = Console.ReadLine();
-            //char nav = input[0];
+            List<string> theList = new List<string>();
+            string input = Console.ReadLine();
+            char nav = input[0];
             //string value = input.substring(1);
 
             //switch(nav){...}
@@ -117,3 +115,20 @@ namespace SkalProj_Datastrukturer_Minne
     }
 }
 
+//  1. Hur fungerar stacken och heapen? Förklara gärna med exempel eller skiss på dess grundläggande funktion.
+
+//     Stacken: Används för lokala variabler och funktionsanrop, hanterar minne automatiskt.
+//     Heapen:  Används för dynamisk minnesallokering, kräver manuell hantering av minnet, och kan hantera minne som
+//     behövs under längre tid.
+
+
+//  2. Vad är Value Types respektive Reference Types och vad skiljer dem åt?
+
+//     Reference Types är typer som ärver från System.Object ex. Class, Interface och String. Dessa lagras endast på Heapen.
+//     Value Types som Int, bool, enum och float lagras där det deklareras, vilket innebär att de kan lagras både på Stacken och Heapen.
+
+
+//  3. Följande metoder(se bild nedan) genererar olika svar. Den första returnerar 3, den andra returnerar 4, varför?
+
+//     I den första så tildelas värden till x och y, den andra är både x och y en referens till samma värde som är sparat på heapen.
+//     
