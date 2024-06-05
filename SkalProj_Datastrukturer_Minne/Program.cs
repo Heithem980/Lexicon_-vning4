@@ -100,7 +100,7 @@
             while (run)
             {
 
-                Console.WriteLine("Enter text to add or remove words from the list by putting (+/-) before the word. \n");
+                Console.WriteLine("Enter text to add or remove words from the list by putting (+/-) before the word. Enter '0' to exit ExamineList \n ");
                 string input = Console.ReadLine()!;
 
                 char nav = input[0];
@@ -149,14 +149,56 @@
 
             bool run = true;
 
+            Queue<string> queue = new Queue<string>();
+            Console.WriteLine("To enqueue, use '+Text' .  \n To dequeue, just enter '-' . Enter '0' to exit ExamineList ");
+
             while (run)
             {
 
+                string input = Console.ReadLine()!;
+
+                char nav = input[0];
+
+                string value = input.Substring(1);
+
+                switch (nav)
+                {
+                    case '+':
+
+                        queue.Enqueue(value);
+
+                        ShowQueue(queue);
+                        break;
+                    case '-':
+
+                        queue.Dequeue();
+                        ShowQueue(queue);
+                        break;
+                    case '0':
+
+                        run = false;
+                        break;
+
+                    default:
+                        Console.WriteLine("Please enter only (+/-).    Enter '0' to exit ExamineList");
+                        break;
+
+                }
 
 
             }
 
         }
+
+        private static void ShowQueue(Queue<string> queue)
+        {
+            foreach (var item in queue)
+            {
+                Console.WriteLine(item);
+            }
+        }
+
+
 
         /// <summary>
         /// Examines the datastructure Stack
