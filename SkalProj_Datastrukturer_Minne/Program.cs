@@ -70,12 +70,70 @@
              * Below you can see some inspirational code to begin working.
             */
 
-            List<string> theList = new List<string>();
-            string input = Console.ReadLine();
-            char nav = input[0];
-            //string value = input.substring(1);
 
-            //switch(nav){...}
+            /*
+                 Övning 1: ExamineList()
+
+              2. När ökar listans kapacitet ? (Alltså den underliggande arrayens storlek)
+                 S: När antal Element överstiger max kapaciteten.
+
+
+              3. Med hur mycket ökar kapaciteten?
+                 S: Med dubbla kappaciteten.
+
+
+              4. Varför ökar inte listans kapacitet i samma takt som element läggs till ?
+                 S: Eftersom det skapas en ny större array varje gång antal element överstiger kapaciteten. Ökningen görs för att 
+                    optimera prestanda och minska antalet minnesallokeringar. 
+
+
+              5. Minskar kapaciteten när element tas bort ur listan?
+                 S: Nej.
+
+              6. När är det då fördelaktigt att använda en egendefinierad array istället för en lista ?
+                 S: När man vet antalet element som man ska placera i Array. 
+            */
+
+            bool run = true;
+            List<string> theList = new List<string>();
+
+            while (run)
+            {
+
+                Console.WriteLine("Enter text to add or remove words from the list by putting (+/-) before the word. \n");
+                string input = Console.ReadLine()!;
+
+                char nav = input[0];
+
+                string value = input.Substring(1);
+
+                switch (nav)
+                {
+                    case '+':
+                        theList.Add(value);
+                        Console.WriteLine($"{value} was added to the list.  \n Count:{theList.Count} Capacity: {theList.Capacity} ");
+                        break;
+                    case '-':
+                        theList.Remove(value);
+                        Console.WriteLine($"{value} was removed from the list.  \n Count:{theList.Count} Capacity: {theList.Capacity} ");
+                        break;
+                    case '0':
+
+                        run = false;
+                        break;
+
+                    default:
+                        Console.WriteLine("Please enter only (+/-).    Enter '0' to exit ExamineList");
+                        break;
+
+                }
+
+
+
+            }
+
+
+
         }
 
         /// <summary>
@@ -88,6 +146,16 @@
              * Create a switch with cases to enqueue items or dequeue items
              * Make sure to look at the queue after Enqueueing and Dequeueing to see how it behaves
             */
+
+            bool run = true;
+
+            while (run)
+            {
+
+
+
+            }
+
         }
 
         /// <summary>
