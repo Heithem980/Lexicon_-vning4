@@ -175,7 +175,7 @@
                         ShowQueue(queue);
                         break;
                     case '0':
-
+                        queue.Clear();
                         run = false;
                         break;
 
@@ -209,7 +209,69 @@
              * Loop this method until the user inputs something to exit to main menue.
              * Create a switch with cases to push or pop items
              * Make sure to look at the stack after pushing and and poping to see how it behaves
+             * 
+             * Övning 3
+              
+               1. Simulera ännu en gång ICA-kön på papper. Denna gång med en stack. Varför är det inte så smart att använda 
+                  en stack i det här fallet?
+
+                  S: Eftersom i en Kö gäller Först in Först ut, FILO principen är orelevant i detta sammanhanget.
             */
+
+            Stack<string> stack = new Stack<string>();
+            bool run = true;
+
+
+
+            while (run)
+            {
+                Console.WriteLine("Enter +/- to push or pop. (Enter '0' to Exit to main menu.)");
+                string input = Console.ReadLine()!;
+
+                char nav = input[0];
+
+
+                switch (nav)
+                {
+                    case '+':
+                        Console.WriteLine("Add text to push: ");
+                        input = Console.ReadLine()!;
+
+                        stack.Push(input);
+
+                        break;
+                    case '-':
+
+
+                        break;
+                    case '0':
+                        stack.Clear();
+                        run = false;
+                        break;
+
+                    default:
+                        Console.WriteLine("Please enter only (+/-).    Enter '0' to exit ExamineList");
+                        break;
+
+                }
+
+
+
+
+
+                foreach (var item in input)
+                {
+                    Console.WriteLine(item);
+                    //stack.Push(item);
+
+
+
+                };
+
+                run = false;
+            }
+
+
         }
 
         static void CheckParanthesis()
