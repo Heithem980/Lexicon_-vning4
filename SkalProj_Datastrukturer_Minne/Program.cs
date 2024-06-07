@@ -219,13 +219,15 @@
             */
 
             Stack<string> stack = new Stack<string>();
+            Stack<char> reverseText = new Stack<char>();
+
             bool run = true;
 
 
 
             while (run)
             {
-                Console.WriteLine("Enter +/- to push or pop. (Enter '0' to Exit to main menu.)");
+                Console.WriteLine("Enter +/- to push or pop. Enter 'r' to reverse text. (Enter '0' to Exit to main menu.)");
                 string input = Console.ReadLine()!;
 
                 char nav = input[0];
@@ -238,12 +240,24 @@
                         input = Console.ReadLine()!;
 
                         stack.Push(input);
+                        ViewStack(stack);
 
                         break;
                     case '-':
+                        stack.Pop();
+                        ViewStack(stack);
+
+                        break;
+                    case 'r':
+                        Console.WriteLine("Add text to reverse: ");
+
+                        input = Console.ReadLine()!;
+
+                        ReverseText(input, reverseText);
 
 
                         break;
+
                     case '0':
                         stack.Clear();
                         run = false;
@@ -259,19 +273,40 @@
 
 
 
-                foreach (var item in input)
-                {
-                    Console.WriteLine(item);
-                    //stack.Push(item);
 
 
-
-                };
-
-                run = false;
+                //run = false;
             }
 
 
+        }
+
+        private static void ReverseText(string input, Stack<char> reverseText)
+        {
+
+            foreach (char character in input)
+            {
+                reverseText.Push(character);
+            }
+
+            while (reverseText.Count > 0)
+            {
+                char x = reverseText.Pop();
+                Console.Write(x);
+            }
+
+            Console.Write("\n");
+
+        }
+
+
+
+        private static void ViewStack(Stack<string> stack)
+        {
+            foreach (string item in stack)
+            {
+                Console.WriteLine(item);
+            }
         }
 
         static void CheckParanthesis()
