@@ -316,7 +316,46 @@
              * Example of correct: (()), {}, [({})],  List<int> list = new List<int>() { 1, 2, 3, 4 };
              * Example of incorrect: (()]), [), {[()}],  List<int> list = new List<int>() { 1, 2, 3, 4 );
              */
+            Console.WriteLine("Enter a string to check for well-formed parentheses:");
+            string input = Console.ReadLine()!;
 
+            if (IsValid(input))
+            {
+                Console.WriteLine("The string is well-formed.");
+            }
+            else
+            {
+                Console.WriteLine("The string is not well-formed.");
+            }
+        }
+
+        static bool IsValid(string s)
+        {
+            Stack<char> stack = new Stack<char>();
+            foreach (char c in s)
+            {
+                if (c == '(' || c == '{' || c == '[')
+                {
+                    stack.Push(c);
+                }
+                else if (c == ')' || c == '}' || c == ']')
+                {
+                    if (stack.Count == 0) return false;
+
+                    char openBracket = stack.Pop();
+
+                    if (!IsMatchingPair(openBracket, c)) return false;
+
+                }
+            }
+            return stack.Count == 0;
+        }
+
+        static bool IsMatchingPair(char open, char close)
+        {
+            return (open == '(' && close == ')') ||
+                   (open == '{' && close == '}') ||
+                   (open == '[' && close == ']');
         }
 
     }
