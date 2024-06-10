@@ -103,23 +103,23 @@
                 Console.WriteLine("Enter text to add or remove words from the list by putting (+/-) before the word. Enter '0' to exit ExamineList \n ");
                 string input = Console.ReadLine()!;
 
-                char nav = input[0];
+                char nav = input[0]; // The first character determines the operation (+ or -)
 
-                string value = input.Substring(1);
+                string value = input.Substring(1); // The rest is the value to add/remove
 
                 switch (nav)
                 {
                     case '+':
-                        theList.Add(value);
+                        theList.Add(value);         // Add value to list
                         Console.WriteLine($"{value} was added to the list.  \n Count:{theList.Count} Capacity: {theList.Capacity} ");
                         break;
                     case '-':
-                        theList.Remove(value);
+                        theList.Remove(value);      // Remove value from list
                         Console.WriteLine($"{value} was removed from the list.  \n Count:{theList.Count} Capacity: {theList.Capacity} ");
                         break;
                     case '0':
 
-                        run = false;
+                        run = false;                // Exit the loop
                         break;
 
                     default:
@@ -157,26 +157,26 @@
 
                 string input = Console.ReadLine()!;
 
-                char nav = input[0];
+                char nav = input[0];        // The first character determines the operation (+ or -)
 
-                string value = input.Substring(1);
+                string value = input.Substring(1);      // The rest is the value to add/remove
 
                 switch (nav)
                 {
                     case '+':
 
-                        queue.Enqueue(value);
+                        queue.Enqueue(value);     // Add value to queue
 
                         ShowQueue(queue);
                         break;
                     case '-':
 
-                        queue.Dequeue();
+                        queue.Dequeue();           // Remove value from queue
                         ShowQueue(queue);
                         break;
                     case '0':
                         queue.Clear();
-                        run = false;
+                        run = false;                // Exit the loop
                         break;
 
                     default:
@@ -190,6 +190,8 @@
 
         }
 
+
+        // Method to display the contents of the queue
         private static void ShowQueue(Queue<string> queue)
         {
             foreach (var item in queue)
@@ -230,7 +232,7 @@
                 Console.WriteLine("Enter +/- to push or pop. Enter 'r' to reverse text. (Enter '0' to Exit to main menu.)");
                 string input = Console.ReadLine()!;
 
-                char nav = input[0];
+                char nav = input[0]; // The first character determines the operation (+, -, r, or 0)
 
 
                 switch (nav)
@@ -239,12 +241,12 @@
                         Console.WriteLine("Add text to push: ");
                         input = Console.ReadLine()!;
 
-                        stack.Push(input);
+                        stack.Push(input);    // Push value onto stack
                         ViewStack(stack);
 
                         break;
                     case '-':
-                        stack.Pop();
+                        stack.Pop();          // Pop value from stack
                         ViewStack(stack);
 
                         break;
@@ -253,14 +255,14 @@
 
                         input = Console.ReadLine()!;
 
-                        ReverseText(input, reverseText);
+                        ReverseText(input, reverseText);     // Method to reverse text input
 
 
                         break;
 
                     case '0':
                         stack.Clear();
-                        run = false;
+                        run = false;        // Exit the loop
                         break;
 
                     default:
@@ -281,17 +283,18 @@
 
         }
 
+        // Method to reverse and display the text using a stack
         private static void ReverseText(string input, Stack<char> reverseText)
         {
 
             foreach (char character in input)
             {
-                reverseText.Push(character);
+                reverseText.Push(character); // Push each character onto the stack
             }
 
             while (reverseText.Count > 0)
             {
-                char x = reverseText.Pop();
+                char x = reverseText.Pop();  // Pop each character to reverse the string
                 Console.Write(x);
             }
 
@@ -300,7 +303,7 @@
         }
 
 
-
+        // Method to display the contents of the stack
         private static void ViewStack(Stack<string> stack)
         {
             foreach (string item in stack)
@@ -329,6 +332,7 @@
             }
         }
 
+        // Method to check if the parentheses in the string are well-formed
         static bool IsValid(string s)
         {
             Stack<char> stack = new Stack<char>();
@@ -336,21 +340,22 @@
             {
                 if (c == '(' || c == '{' || c == '[')
                 {
-                    stack.Push(c);
+                    stack.Push(c);          // Push opening brackets onto the stack
                 }
                 else if (c == ')' || c == '}' || c == ']')
                 {
                     if (stack.Count == 0) return false;
 
-                    char openBracket = stack.Pop();
+                    char openBracket = stack.Pop();     // Pop the top element
 
-                    if (!IsMatchingPair(openBracket, c)) return false;
+                    if (!IsMatchingPair(openBracket, c)) return false;      // Check if it matches
 
                 }
             }
             return stack.Count == 0;
         }
 
+        // Helper method to check if a pair of brackets match
         static bool IsMatchingPair(char open, char close)
         {
             return (open == '(' && close == ')') ||
